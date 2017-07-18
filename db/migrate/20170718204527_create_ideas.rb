@@ -1,0 +1,10 @@
+class CreateIdeas < ActiveRecord::Migration[5.1]
+  def change
+    create_table :ideas do |t|
+      t.text :idea
+      t.references :category, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
