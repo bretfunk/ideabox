@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :idea do
-  sequence :idea |i|
-    "idea#{i}"
+    idea "MyString"
+    category
   end
-  factory
 end
