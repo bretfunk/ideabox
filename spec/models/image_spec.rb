@@ -11,7 +11,7 @@ describe Image, type: :model do
     end
     context "valid attributes" do
       it "is valid" do
-        image = Image.create(url: "www.spacex.com")
+        image = create(:image)
 
         expect(image).to be_valid
       end
@@ -19,10 +19,7 @@ describe Image, type: :model do
   end
   context "assocations" do
     it "associates with ideas" do
-      category = Category.create(name: "Space")
-      idea = category.ideas.create(idea: "Mine the moon")
-      image = Image.create(url: "www.spacex.com")
-      idea_image = IdeaImage.create(idea_id: 1, image_id: 1)
+      image = create(:image)
 
       expect(image).to respond_to(:ideas)
     end

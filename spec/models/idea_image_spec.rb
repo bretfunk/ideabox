@@ -18,21 +18,15 @@ describe IdeaImage, type: :model do
   end
   context "assocations" do
     it "responds to image" do
-    Category.create(name: "Love")
-    Idea.create(idea: "Be nice and loving", category_id: 1)
-    Image.create(url: "www.ilovedaniela.com")
-    idea_image = IdeaImage.create(idea_id: 1, image_id: 1)
+      idea_image = create(:idea_image)
 
-    expect(idea_image).to respond_to(:image)
+      expect(idea_image).to respond_to(:image)
     end
 
     it "responds to idea" do
-    Category.create(name: "Love")
-    Idea.create(idea: "Be nice and loving", category_id: 1)
-    Image.create(url: "www.ilovedaniela.com")
-    idea_image = IdeaImage.create(idea_id: 1, image_id: 1)
+      idea_image = create(:idea_image)
 
-    expect(idea_image).to respond_to(:idea)
+      expect(idea_image).to respond_to(:idea)
     end
   end
 end

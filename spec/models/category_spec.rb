@@ -19,8 +19,7 @@ describe Category, type: :model do
   end
   context "assocations" do
     it "resonds to ideas" do
-      category = Category.create(name: "Space")
-      category.ideas.create(idea: "Mine Mars")
+      category = create(:category, :with_ideas, idea_count: 3)
 
       expect(category).to respond_to(:ideas)
     end
