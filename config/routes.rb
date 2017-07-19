@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
 
-root to: 'dashboards#index'
+root to: 'sessions#new'
 get '/dashboards'  => 'dashboards#index'
 
 # resources :users, only: [:new, :create]
 
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
-delete '/logout' => 'sessions#destroy'
+get '/logout' => 'sessions#destroy'
 
 get '/signup' => 'users#new'
-post '/users' => 'users#create'
 
-  resources :ideas
+resources :users, only: [:show, :new, :create] do
+    resources :ideas
+  end
+
+namespace :admin do
+  resources :categories, only: [:index]
+end
+
 # namespace: admin do
 #   resources :ideas
 # end

@@ -1,18 +1,20 @@
 Idea.destroy_all
 Image.destroy_all
 Category.destroy_all
+User.destroy_all
 
-
-IDEAS = ["Apples", "Oranges", "Pears", "Blueberries", "Milk", "Eggs", "Cheese", "Bread", "Meat", "Soylent"]
-IMAGES = ["www.image1.com", "www.image2.com", "www.image3.com", "www.image4.com", "www.image5.com", "www.image6.com", "www.image7.com", "www.image8.com", "www.image9.com"]
-CATEGORIES = ["Store", "Work", "Home", "Turing", "Birthday", "Trip", "New Job", "Fun", "Life Goals"]
-
+USERS = ["Matthew", "Mark", "Luke", "John", "Ringo"]
+IDEAS = ["Apples", "Oranges", "Pears", "Blueberries", "Milk", ]
+IMAGES = ["www.image1.com", "www.image2.com", "www.image3.com", "www.image4.com", "www.image5.com", "www.image6.com"]
+CATEGORIES = ["Store", "Work", "Home", "Turing", "Trip", "Fun"]
 
 CATEGORIES.each do |name|
-  category = Category.create!(name: name)
-  puts "Created #{category.name}"
-  10.times do |num|
-    category.ideas.create!(idea: IDEAS.sample)
-    Image.create(url: IMAGES.sample)
+  Category.create!(name: name)
+end
+
+USERS.each do |name|
+  user = User.create!(username: name, password: IDEAS.sample)
+  3.times do |num|
+    user.ideas.find_or_create_by!(idea: IDEAS.sample, category_id: (rand(5) + 1))
   end
 end

@@ -4,5 +4,6 @@ FactoryGirl.define do
     "idea#{i}"
     end
     category
+    user
   end
 end

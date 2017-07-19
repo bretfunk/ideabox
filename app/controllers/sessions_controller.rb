@@ -4,13 +4,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find(username: params[:username])
+    user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = "Logged in"
-      redirect_to '/'
+      redirect_to user
     else
-      flash[:notice] = "Error, #{user.errors.key}, #{user.errors.value}"
+      flash[:notice] = "Error, User does not exist"
       redirect_to '/login'
     end
   end

@@ -1,7 +1,17 @@
+<div class="jumbotron">
+  <h1 class="display-3">Signup</h1>
+  <p class="lead">IdeaBox is a revolutionary website dedicated to keeping your data safe.</p>
+  <hr class="my-4">
+  <p>Save your ideas.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+</div>
+
 <%= form_for :user, url: '/users' do |f| %>
 <%= f.label :username %>
 <%= f.text_field :username %>
 <%= f.label :password %>
 <%= f.password_field :password %>
-<%= f.submit "Login" %>
+<%= f.submit "Signup" %>
 <% end %>
