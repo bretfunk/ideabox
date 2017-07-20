@@ -1,5 +1,8 @@
 class DashboardsController < ApplicationController
 
-  def index
+  def learn_more
+  end
+
+  def support
   end
 end

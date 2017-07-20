@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :validate_user, :only => :show
 
   def validate_user
-  redirect_to courses_path unless current_user.id.to_s == params[:id]
-end
+    redirect_to login_path unless current_user.id.to_s == params[:id]
+  end
 
   def new
     @user = User.new

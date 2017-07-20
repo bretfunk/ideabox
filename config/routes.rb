@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   root to: 'sessions#new'
-  get '/dashboards'  => 'dashboards#index'
+  get '/learn_more'  => 'dashboards#learn_more'
+  get '/support'  => 'dashboards#support'
 
   # resources :users, only: [:new, :create]
 
