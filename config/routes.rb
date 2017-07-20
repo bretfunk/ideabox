@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'sessions#new'
+  root to: 'users#new'
   get '/learn_more'  => 'dashboards#learn_more'
   get '/support'  => 'dashboards#support'
 

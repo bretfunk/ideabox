@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to '/login' unless current_user
   end
+
+  def validate_user
+    redirect_to login_path unless current_user.id.to_s == params[:id]
+  end
 end

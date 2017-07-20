@@ -1,4 +1,7 @@
 class IdeasController < ApplicationController
+  #users still have access to other users individal show idea pages
+  before_action :validate_user, only: [:index]
+
 
   def index
     @user = User.find(params[:user_id])

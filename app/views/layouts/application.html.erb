@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ideabox</title>
+    <title>IdeaBox</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -27,7 +27,6 @@ background-color:transparent !important
         <ul class="nav navbar-nav">
             <% if current_user %>
             <li><a href="<%= user_path(current_user)%>"><%= current_user.username %>'s Profile</a></li>
-            <% else %>
             <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-center">
@@ -43,9 +42,9 @@ background-color:transparent !important
           <li><a href="#">Center</a></li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">IdeaBox</a></li>
+            <li><a href="/learn_more">Learn More</a></li>
+            <li><a href="/support">Support</a></li>
+            <li><a href="/signup">IdeaBox</a></li>
         </ul>
       </div>
     </nav>
