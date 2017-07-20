@@ -4,16 +4,17 @@ describe "User edits an idea" do
   scenario "a user edits an idea" do
     idea = create(:idea)
 
-    visit idea_path(idea)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(idea.user)
+
+    visit user_path(idea.user)
 
     click_on "Edit"
 
-    #need actual title below
-    fill_in "Apples"
+    fill_in 'Idea', with: "Apples"
 
-    click_on "Submit"
+    click_link "Update Idea"
 
-    visit idea_path(idea)
+    visit user_path(idea.user)
 
     expect(page).to have_content("Apples")
 

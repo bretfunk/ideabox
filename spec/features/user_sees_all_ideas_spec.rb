@@ -2,18 +2,20 @@ require 'rails_helper'
 
 describe "User creates a new idea" do
   scenario "a user can create a new idea" do
-    # category = Category.create(name: "Grocery Store")
-    # category.ideas.create(idea: "Apples")
-    # category.ideas.create(idea: "Bananas")
-    # category.ideas.create(idea: "Soylent")
-    category1 = create(:category)
-    category2 = create(:category)
-    category3 = create(:category)
+    user = create(:user)
+    category = create(:category)
 
-    visit ideas_path
+    idea1 = user.ideas.create(idea: "Apples", category_id: category.id)
+    idea2 = user.ideas.create(idea: "Bananas", category_id: category.id)
+    idea3 = user.ideas.create(idea: "Grapes", category_id: category.id)
 
-    expect(page).to have_content(category1.name)
-    expect(page).to have_content(category2.name)
-    expect(page).to have_content(category3.name)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit user_ideas_path(user)
+
+    expect(page).to have_content(idea1.idea)
+    expect(page).to have_content(idea2.idea)
+    expect(page).to have_content(idea3.idea)
+
   end
 end

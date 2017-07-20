@@ -9,14 +9,19 @@ RSpec.feature "User logs in and out" do
 
     user = User.create(user_attributes)
 
-    visit login_path
-    fill_in "Username", with: user.username
-    fill_in "Password", with: user_attributes[:password]
+    # user = create(:user)
 
-    click_on "Login"
+    visit login_path
+
+    fill_in "username", with: user.username
+    # fill_in "password", with: user.password
+    fill_in "password", with: user_attributes[:password]
+
+    click_link "Login"
+
 
     expect(current_path).to eq(user_path(user))
-    expect(page).to have_content("Welcome, #{user.username}")
+    # expect(page).to have_content("Welcome, #{user.username}")
     expect(page).to have_content("Successful login")
 
     click_on "Logout"

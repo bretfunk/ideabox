@@ -4,14 +4,19 @@ describe "User creates a new idea" do
   scenario "a user can create a new idea" do
     # Category.create(name: "Grocery Store")
     category = create(:category)
+    user = create(:user)
+    idea = user.ideas.create(idea: "idea", category_id: category.id)
 
-    visit new_idea_path
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(idea.user)
+
+    visit new_user_idea_path(user)
 
     fill_in "Idea", with: "Soylent"
-    #select category.name
-    click_on "Submit"
+    #don't know what this is called
+    select category.name, from: "idea_category_id"
+    click_on "Update Idea"
 
-    visit ideas_path
+    visit user_path(user)
 
     expect(page).to have_content("Soylent")
   end

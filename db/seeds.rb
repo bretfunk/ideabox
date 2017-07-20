@@ -18,3 +18,5 @@ USERS.each do |name|
     user.ideas.find_or_create_by!(idea: IDEAS.sample, category_id: (rand(5) + 1))
   end
 end
+
+User.create(username: "admin", password: "123", role: 1)

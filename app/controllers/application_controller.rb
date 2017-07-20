@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def validate_user
     redirect_to login_path unless current_user.id.to_s == params[:id]
   end
+
+  def owns_ideas
+    redirect_to login_path unless current_user.id.to_s == params[:user_id]
+  end
 end

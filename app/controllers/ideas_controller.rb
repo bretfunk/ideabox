@@ -1,28 +1,30 @@
 class IdeasController < ApplicationController
   #users still have access to other users individal show idea pages
-  before_action :validate_user, only: [:index]
+  before_action :owns_ideas
 
 
   def index
-    @user = User.find(params[:user_id])
-    @ideas = @user.ideas
+    @ideas = current_user.ideas
   end
 
   def show
     # @idea = Idea.find(params[:id])
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = current_user
     @idea = Idea.new
   end
 
   def new
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = current_user
     @idea = Idea.new
     #might not need below
     @categories = Category.all
   end
 
   def create
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = current_user
     @idea = @user.ideas.new(idea_params)
     if @idea.save
       flash[:notice] = "Idea saved!"
@@ -34,12 +36,15 @@ class IdeasController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @idea = Idea.find(params[:id])
+    # @user = User.find(params[:user_id])
+    @user = current_user
+    @idea = @user.ideas.find(params[:id])
+    # @idea = Idea.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = current_user
     @idea = @user.ideas.find(params[:id])
     if @idea.update(idea_params)
       flash[:notice] = "#Idea updated!"
@@ -52,7 +57,8 @@ class IdeasController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = current_user
     @idea = @user.ideas.find(params[:id])
     if @idea.destroy
       flash[:notice] = "Idea deleted"
