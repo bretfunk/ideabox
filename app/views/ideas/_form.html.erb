@@ -1,0 +1,7 @@
+<%= form_for [@user, @idea] do |f| %>
+<%= f.label :idea %>
+<%= f.text_field :idea %>
+<%= f.label :category %>
+<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => true %>
+<%= f.submit %>
+<% end %>

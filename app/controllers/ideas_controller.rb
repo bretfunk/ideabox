@@ -1,23 +1,29 @@
 class IdeasController < ApplicationController
 
   def index
-    @ideas = Idea.all
+    @user = User.find(params[:user_id])
+    @ideas = @user.ideas
   end
 
   def show
-    @idea = Idea.find(params[:id])
+    # @idea = Idea.find(params[:id])
+    @user = User.find(params[:user_id])
+    @idea = Idea.new
   end
 
   def new
+    @user = User.find(params[:user_id])
     @idea = Idea.new
+    #might not need below
     @categories = Category.all
   end
 
   def create
-    @idea = Idea.new(idea_params)
+    @user = User.find(params[:user_id])
+    @idea = @user.ideas.new(idea_params)
     if @idea.save
       flash[:notice] = "Idea saved!"
-      redirect_to ideas_path
+      redirect_to @user
     else
       flash[:notice] = "Idea not saved. #{@idea.errors.keys}, #{@idea.errors.values}"
       render :new
@@ -25,14 +31,16 @@ class IdeasController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:user_id])
     @idea = Idea.find(params[:id])
   end
 
   def update
-    @idea = Idea.find(params[:id])
+    @user = User.find(params[:user_id])
+    @idea = @user.ideas.find(params[:id])
     if @idea.update(idea_params)
       flash[:notice] = "#Idea updated!"
-      redirect_to ideas_path
+      redirect_to @user
     else
       flash[:notice] = "Idea not updated. #{@idea.errors}"
       render :edit
@@ -41,20 +49,21 @@ class IdeasController < ApplicationController
   end
 
   def destroy
-    @idea = Idea.find(params[:id])
+    @user = User.find(params[:user_id])
+    @idea = @user.ideas.find(params[:id])
     if @idea.destroy
       flash[:notice] = "Idea deleted"
-      redirect_to ideas_path
+      redirect_to @user
     else
       flash[:notice] = "Idea not deleted, #{@idea.errors.keys}, #{@idea.errors.values}"
-      redirect_to idea_path(@idea)
+      redirect_to @user
     end
   end
 
   private
 
   def idea_params
-    params.require(:idea).permit(:idea, :category_id)
+    params.require(:idea).permit(:idea, :category_id, :user_id)
   end
 
 end
