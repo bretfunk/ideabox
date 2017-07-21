@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   #users still have access to other users individal show idea pages
-  before_action :owns_ideas
+  # before_action :owns_ideas
 
 
   def index
@@ -8,10 +8,15 @@ class IdeasController < ApplicationController
   end
 
   def show
-    # @idea = Idea.find(params[:id])
-    # @user = User.find(params[:user_id])
     @user = current_user
-    @idea = Idea.new
+    @idea = @user.ideas.find(params[:id])
+    @images = @idea.images
+    @image = @idea.images.new
+
+    # @image = Image.new
+    # @image.idea_id = @idea.id
+    # @image.ideas.first.user = @user.id
+
   end
 
   def new

@@ -1,0 +1,7 @@
+<h1>Create A New Image</h1>
+<%= form_for [ @user, @idea, @image ] do |f| %>
+  <%= f.label :image %>
+  <%= f.collection_select :url, Image.all, :url, :url, :prompt => true %>
+  <%= f.submit 'Submit' %>
+</p>
+<% end %>

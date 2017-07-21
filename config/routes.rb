@@ -13,11 +13,17 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
 
   resources :users, except: [:new] do
-      resources :ideas
+      resources :ideas do
+        resources :images
+      end
     end
 
   namespace :admin do
     resources :categories
+  end
+
+  namespace :admin do
+    resources :images
   end
 
   # resource :user
