@@ -14,7 +14,8 @@ describe "User creates a new idea" do
     fill_in "Idea", with: "Soylent"
     #don't know what this is called
     select category.name, from: "idea_category_id"
-    click_on "Update Idea"
+    # click_on "Update Idea"
+    click_on "Create Idea"
 
     visit user_path(user)
 

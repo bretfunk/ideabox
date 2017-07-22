@@ -19,4 +19,9 @@ USERS.each do |name|
   end
 end
 
+IMAGES.each do |image|
+  Image.create!(url: image)
+end
+
+User.create(username: "bret", password: "123")
 User.create(username: "admin", password: "123", role: 1)

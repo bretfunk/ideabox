@@ -3,5 +3,10 @@
 <%= f.text_field :idea %>
 <%= f.label :category %>
 <%= f.collection_select :category_id, Category.all, :id, :name, :prompt => true %>
+<% Image.all.each do |image| %>
+<div>
+  <%= check_box_tag('idea[image_ids][]', image.id, @idea.images.include?(image), id: "image-#{image.id}") %>
+  <%= image.url %>
+  <% end %>
 <%= f.submit %>
 <% end %>

@@ -1,0 +1,7 @@
+<h1>Admin Images Form</h1>
+<% @images.each do |image| %>
+<p><%= image.url %></p>
+<p><%= link_to "Edit", edit_admin_image_path(image) %></p>
+<p><%= link_to "Delete", admin_image_path(image), method: :delete %></p>
+<% end %>
+<%= link_to "New Image", new_admin_image_path %>

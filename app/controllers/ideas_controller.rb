@@ -11,7 +11,7 @@ class IdeasController < ApplicationController
     @user = current_user
     @idea = @user.ideas.find(params[:id])
     @images = @idea.images
-    @image = @idea.images.new
+    @image = @idea.idea_images.new
 
     # @image = Image.new
     # @image.idea_id = @idea.id
@@ -77,7 +77,7 @@ class IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:idea, :category_id, :user_id)
+    params.require(:idea).permit(:idea, :category_id, :user_id, image_ids: [])
   end
 
 end

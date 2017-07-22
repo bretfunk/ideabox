@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :destroy, :update, :show]
-  # before_action :validate_user, :only => :show
-  before_action :validate_user, except: [:new]
+  before_action :validate_user, :only => :show
+
 
   def new
     @user = User.new

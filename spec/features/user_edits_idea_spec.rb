@@ -10,9 +10,9 @@ describe "User edits an idea" do
 
     click_on "Edit"
 
-    fill_in 'Idea', with: "Apples"
+    fill_in "Idea", with: "Apples"
 
-    click_link "Update Idea"
+    click_on "Update Idea"
 
     visit user_path(idea.user)
 
