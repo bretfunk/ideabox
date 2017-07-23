@@ -1,10 +1,47 @@
-<h1><%= @user.username %>'s Ideas</h1>
-<% @user.ideas.each do |idea| %>
-<h3><%= link_to idea.idea, user_idea_path(idea.user, idea) %></h3>
-  <!-- link category to own page too -->
-<p><%= idea.category.name %></p>
-<p><%= link_to "Edit", edit_user_idea_path(idea.user, idea) %>
-<p><%= link_to "Delete", user_idea_path(idea.user, idea), method: :delete %></p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3"><%= current_user.username %></h1>
+  </div>
+</div>
 
+
+  <div class= "text-center">
+
+<% if @user.role == "admin" %>
+<h3>Welcome Admin!</h3>
+<h3>Link to categories: <%= link_to "Categories", admin_categories_path %></h3>
+<h3>Link to images: <%= link_to "Images", admin_images_path %></h3>
 <% end %>
-<%= link_to "Add Idea", new_user_idea_path(@user) %>
+  </div>
+
+<div class="container">
+  <table class="table table-hover text-left">
+    <thead>
+      <tr>
+
+       <th><h3>Idea</h3></th>
+        <th><h3>Category</h3></th>
+          <th><h3>Edit</h3></th>
+          <th><h3>Delete</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+
+<% @user.ideas.each do |idea| %>
+
+  <tr>
+    <td><h4><%= link_to idea.idea, user_idea_path(idea.user, idea) %> </h4></td>
+
+    <td><h4><%= idea.category.name %></h4></td>
+
+    <td><h4><%= link_to "Edit", edit_user_idea_path(idea.user, idea), class: "btn btn-primary" %></h4></td>
+
+    <td><h4><%= link_to "Delete", user_idea_path(idea.user, idea), method: :delete, class: "btn btn-danger"%></h4></td>
+
+  </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+<%= link_to "Add Idea", new_user_idea_path(@user), class: "btn btn-success btn-block" %>
+

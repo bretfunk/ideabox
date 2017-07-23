@@ -1,12 +1,12 @@
 <%= form_for [@user, @idea] do |f| %>
-<%= f.label :idea %>
-<%= f.text_field :idea %>
-<%= f.label :category %>
-<%= f.collection_select :category_id, Category.all, :id, :name, :prompt => true %>
+<p><%= f.label :idea %></p>
+<p><%= f.text_field :idea %></p>
+<p><%= f.label :category %></p>
+<p><%= f.collection_select :category_id, Category.all, :id, :name, :prompt => true %></p>
 <% Image.all.each do |image| %>
 <div>
   <%= check_box_tag('idea[image_ids][]', image.id, @idea.images.include?(image), id: "image-#{image.id}") %>
-  <%= image.url %>
+<p>  <%= image.url %></p>
   <% end %>
-<%= f.submit %>
+<p><%= f.submit %></p>
 <% end %>

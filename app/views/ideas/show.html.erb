@@ -1,10 +1,35 @@
-<h1>Task:<%= @idea.idea %> for: <%= current_user.username %></h1>
-<h2><%= @idea.idea %></h2>
-<%= link_to "Edit", edit_user_idea_path(@user, @idea) %>
-<%= link_to "Delete", user_idea_path(@user, @idea), method: :delete %>
-<h3><%= @idea.category.name %></h3>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3"><%= @idea.idea %></h1>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-hover text-left">
+    <thead>
+      <tr>
+
+       <th><h3>Idea</h3></th>
+        <th><h3>Category</h3></th>
+          <th><h3>Edit</h3></th>
+          <th><h3>Delete</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+<td><h4><%= @idea.idea %></h4></td>
+<td><h4><%= @idea.category.name %></h4></td>
+<td><h4><%= link_to "Edit", edit_user_idea_path(@user, @idea), class: "btn btn-success" %></h4></td>
+<td><h4><%= link_to "Delete", user_idea_path(@user, @idea), method: :delete, class: "btn btn-danger" %></h4></td>
+</tr>
+      </tbody>
+  </table>
+</div>
+<div class="text-center">
 <h2>Images</h2>
 <% @images.each do |image| %>
+<p><img src=<% image.url %>
 <%= image.url %>
 <% end %>
-<!-- <p><%= link_to "New Image", new_user_idea_idea_image_path(@user, @idea, @idea_image) %></p> -->
+</div>

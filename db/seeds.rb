@@ -5,7 +5,7 @@ User.destroy_all
 
 USERS = ["Matthew", "Mark", "Luke", "John", "Ringo"]
 IDEAS = ["Apples", "Oranges", "Pears", "Blueberries", "Milk", ]
-IMAGES = ["www.image1.com", "www.image2.com", "www.image3.com", "www.image4.com", "www.image5.com", "www.image6.com"]
+IMAGES = ["https://robohash.org/1","https://robohash.org/2","https://robohash.org/3","https://robohash.org/4","https://robohash.org/5"]
 CATEGORIES = ["Store", "Work", "Home", "Turing", "Trip", "Fun"]
 
 CATEGORIES.each do |name|
