@@ -20,7 +20,8 @@ USERS.each do |name|
 end
 
 IMAGES.each do |image|
-  Image.create!(url: image)
+  counter = rand(100)
+  Image.create!(url: image, name: "Robot #{counter}")
 end
 
 User.create(username: "bret", password: "123")

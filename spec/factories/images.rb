@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence :url do |i|
     "url#{i}"
     end
+    name "Robot"
     trait :with_ideas do
   transient do
   idea_count 3

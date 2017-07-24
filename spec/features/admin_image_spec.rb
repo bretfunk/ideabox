@@ -10,7 +10,7 @@ describe "User visits images index page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit admin_images_path
-      expect(page).to have_content("Admin Images")
+      expect(page).to have_content("Images")
     end
   end
   context "as default user" do

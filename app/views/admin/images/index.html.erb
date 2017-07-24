@@ -1,7 +1,36 @@
-<h1>Admin Images Form</h1>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3"><%= Images %></h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <table class="table table-hover text-left">
+    <thead>
+      <tr>
+
+       <th><h3>Name</h3></th>
+        <th><h3>URL</h3></th>
+          <th><h3>Edit</h3></th>
+          <th><h3>Delete</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+
+
 <% @images.each do |image| %>
-<p><%= image.url %></p>
-<p><%= link_to "Edit", edit_admin_image_path(image) %></p>
-<p><%= link_to "Delete", admin_image_path(image), method: :delete %></p>
+<td><h4><%= image.name %></h4></td>
+<td><h4><%= image.url %></h4></td>
+<td><h4><%= link_to "Edit", edit_admin_image_path(image), class: "btn btn-primary" %></h4></td>
+<td><h4><%= link_to "Delete", admin_image_path(image), method: :delete, class: "btn btn-danger" %></h4></td>
+</tr>
 <% end %>
-<%= link_to "New Image", new_admin_image_path %>
+
+</tbody>
+</table>
+</div>
+<%= link_to "New Image", new_admin_image_path, class: "btn btn-block btn-success" %>
+
+

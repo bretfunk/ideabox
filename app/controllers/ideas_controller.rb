@@ -1,7 +1,4 @@
 class IdeasController < ApplicationController
-  #users still have access to other users individal show idea pages
-  # before_action :owns_ideas
-
 
   def index
     @ideas = current_user.ideas
@@ -13,22 +10,15 @@ class IdeasController < ApplicationController
     @images = @idea.images
     @image = @idea.idea_images.new
 
-    # @image = Image.new
-    # @image.idea_id = @idea.id
-    # @image.ideas.first.user = @user.id
-
   end
 
   def new
-    # @user = User.find(params[:user_id])
     @user = current_user
     @idea = Idea.new
-    #might not need below
     @categories = Category.all
   end
 
   def create
-    # @user = User.find(params[:user_id])
     @user = current_user
     @idea = @user.ideas.new(idea_params)
     if @idea.save
@@ -41,14 +31,11 @@ class IdeasController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:user_id])
     @user = current_user
     @idea = @user.ideas.find(params[:id])
-    # @idea = Idea.find(params[:id])
   end
 
   def update
-    # @user = User.find(params[:user_id])
     @user = current_user
     @idea = @user.ideas.find(params[:id])
     if @idea.update(idea_params)

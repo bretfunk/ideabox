@@ -1,8 +1,8 @@
-require 'rails-helper'
+require 'rails_helper'
 
 describe "Admin edits a category title" do
   it "an admin edits a category title" do
-    admin = create(:admin, role: 1)
+    admin = create(:user, role: 1)
     category = create(:category)
 
 

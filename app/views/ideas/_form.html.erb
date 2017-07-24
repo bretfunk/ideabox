@@ -6,7 +6,7 @@
 <% Image.all.each do |image| %>
 <div>
   <%= check_box_tag('idea[image_ids][]', image.id, @idea.images.include?(image), id: "image-#{image.id}") %>
-<p>  <%= image.url %></p>
+<p>  <%= image.name %></p>
   <% end %>
 <p><%= f.submit %></p>
 <% end %>
